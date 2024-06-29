@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css"
+    integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rental Reviews</title>
+  <link rel="stylesheet" href="/css/Index.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+
+<body>
+  <header class="desktop-header">
+    <div class="header-content">
+      <a href="Index.html">
+        <img src="img/logo-rental.png" alt="Rental Reviews Logo" class="logo" /></a>
+      <nav class="desktop-menu">
+        <ul>
+          <li><a href="Index.html">Home</a></li>
+          <li><a href="Search.html">Search</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-buttons desktop-menu">
+        <a href="#" class="button" id="signInBtn">Sign In</a>
+        <a href="#" class="button" id="signUpBtn">Sign Up</a>
+        <a href="propertyentry.html" class="button" id="subletPostingBtn">Sublet Posting</a>
+        <a href="#" class="button submit-review" id="blogBtn">Submit Rental Review</a>
+      </div>
+      <div class="profile-section">
+        <a class="text-black" href="profile.html">
+          <i class="fa-solid fa-user"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <header class="mobile-header">
+    <div class="header-content">
+      <a href="Index.html">
+        <img src="img/logo-rental.png" alt="Rental Reviews Logo" class="logo" /></a>
+      <div class="mobile-menu-button" id="mobileMenuButton">&#9776;</div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="Search.html">Search</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#" id="mobileSignInBtn">Sign In</a></li>
+        <li><a href="#" id="mobileSignUpBtn">Sign Up</a></li>
+        <li><a href="propertyentry.html" id="mobileSubletPostingBtn">Sublet Posting</a></li>
+        <li><a href="#" id="mobileBlogBtn">Submit Rental Review</a></li>
+      </ul>
+      <div class="profile-section">
+        <a class="text-black" href="profile.html">
+          <i class="fa-solid fa-user"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="modal" id="signInModal">
+    <div class="modal-content review-form-container">
+      <div class="row align-items-center">
+        <div class="col-lg-2">
+          <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+        </div>
+        <div class="col-lg-10">
+          <h2>Sign in</h2>
+        </div>
+      </div>
+      <span class="close-btn">&times;</span>
+
+      <form id="signInForm">
+        <div class="form-group">
+          <input type="text" id="signInUsername" name="username" required oninput="validateUsername(this)"
+            placeholder=" " />
+          <label for="signInUsername" class="text-start">Username</label>
+        </div>
+        <div class="form-group">
+          <div class="password-container">
+            <input type="password" id="password" name="password" required placeholder=" " />
+            <label for="password" class="text-start">Password</label>
+            <div class="toggle-password" onclick="togglePasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group text-center">
+          <button type="submit" class="modal-button">Sign In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="signUpModal">
+    <div class="modal-content review-form-container">
+      <div class="row align-items-center">
+        <div class="col-lg-2">
+          <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+        </div>
+        <div class="col-lg-10">
+          <h2>Sign Up</h2>
+        </div>
+      </div>
+      <span class="close-btn">&times;</span>
+      <form id="signUpForm">
+        <div class="form-group">
+          <input type="text" id="signUpUsername" name="username" required oninput="validateUsername(this)"
+            placeholder=" " />
+          <label for="signUpUsername" class="text-start">Username</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="signup-email" name="signup-email" required placeholder=" " />
+          <label for="signup-email" class="text-start">Email</label>
+        </div>
+        <div class="form-group">
+          <div class="password-container">
+            <input type="password" id="signup-password" name="signup-password" required placeholder=" " />
+            <label for="signup-password" class="text-start">Password</label>
+            <div class="toggle-password" onclick="toggleSignUpPasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </div>
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="modal-button">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="subletPostingModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Sublet Posting</h2>
+    </div>
+  </div>
+  <div class="modal" id="blogModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div class="review-form-container">
+        <div class="row align-items-center">
+          <div class="col-lg-2">
+            <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+          </div>
+          <div class="col-lg-10">
+            <h3>Submit Rental Review</h3>
+          </div>
+        </div>
+        <form id="reviewForm">
+          <div class="form-group review">
+            <input type="text" id="name" name="name" placeholder=" " required />
+            <label for="name">Name</label>
+          </div>
+          <div class="form-group review">
+            <input type="email" id="email" name="email" placeholder=" " required />
+            <label for="email">Email</label>
+          </div>
+          <div class="form-group review">
+            <select id="rating" name="rating" required>
+              <option value="" selected>Select Option</option>
+              <option value="1">1 - Very Poor</option>
+              <option value="2">2 - Poor</option>
+              <option value="3">3 - Average</option>
+              <option value="4">4 - Good</option>
+              <option value="5">5 - Excellent</option>
+            </select>
+            <label for="rating">Rating</label>
+          </div>
+          <div class="form-group">
+            <textarea id="comments" name="comments" placeholder=" " rows="4" required></textarea>
+            <label for="comments">Comments</label>
+          </div>
+          <button type="submit">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="m-3">
+    <div class="search-bar">
+      <input type="text" placeholder="Address, City, ZIP, or Neighborhood" class="search-input" />
+      <button class="search-button1">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <div class="search-fields">
+      <div class="field">
+        <label for="distance-campus" class="text-white">Distance from Campus</label>
+        <select id="distance-campus" class="search-select">
+          <option>Any</option>
+          <option>Within 1 mile</option>
+          <option>1-3 miles</option>
+          <option>3-5 miles</option>
+          <option>5+ miles</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="transport-access" class="text-white">Public Transportation Access</label>
+        <select id="transport-access" class="search-select">
+          <option>Any</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="furnishing" class="text-white">Furnished or Unfurnished</label>
+        <select id="furnishing" class="search-select">
+          <option>Any</option>
+          <option>Furnished</option>
+          <option>Unfurnished</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="utilities" class="text-white">24/7 Maintenance Support
+        </label>
+        <select id="utilities" class="search-select">
+          <option>Any</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="pet-friendly" class="text-white">Pet-Friendly Options</label>
+        <select id="pet-friendly" class="search-select">
+          <option>Any</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="parking" class="text-white">Parking Availability</label>
+        <select id="parking" class="search-select">
+          <option>Any</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-3">
+    <div class="sidebar col-lg-9">
+      <div class="results-header">
+        <span>Results: 37 Listings</span>
+        <div class="dropdown-container">
+          <span class="sort-label">Sort By:</span>
+          <select data-name="select-element" data-testid="select-element" aria-label="Sort by Relevant listings"
+            class="sort-select">
+            <option value="sby-8">Relevant listings</option>
+            <option value="sby-6">Newest listings</option>
+            <option value="sby-1">Lowest price</option>
+            <option value="sby-2">Highest price</option>
+            <option value="sby-17">Year built</option>
+            <option value="sby-5">Open house date</option>
+            <option value="sby-7">Recently reduced</option>
+            <option value="sby-14">Largest sqft</option>
+            <option value="sby-9">Lot size</option>
+            <option value="sby-16">Photo count</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <a class="text-decoration-none text-black" href="houseproperty.html">
+            <div class="property-card">
+              <img src="/img/01house.webp" alt="Property Image" class="property-image" />
+              <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+              </div>
+              <div class="property-detail">
+                <div class="property-status">
+                  <span class="status-pending">Pending</span>
+                  <span class="property-price">$275,000</span>
+                </div>
+                <div class="property-info">
+                  <span class="info-beds">3 bed</span>
+                  <span class="info-baths">3 bath</span>
+                  <span class="info-sqft">4,400 sqft</span>
+                  <span class="info-acre">0.79 acre lot</span>
+                </div>
+                <div class="property-address">
+                  5350 Cheviot Pl<br />
+                  Indianapolis, IN 46226
+                </div>
+                <button class="email-agent">Contact Sublet Owner</button>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="text-decoration-none text-black" href="houseproperty.html">
+            <div class="property-card">
+              <img src="/img/02house.webp" alt="Property Image" class="property-image" />
+              <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+              </div>
+              <div class="property-detail">
+                <div class="property-status">
+                  <span class="status-completed">House For Sublet </span>
+                  <span class="property-price">$469,900</span>
+                </div>
+                <div class="property-info">
+                  <span class="info-beds">4 bed</span>
+                  <span class="info-baths">2.5 bath</span>
+                  <span class="info-sqft">3,917 sqft</span>
+                  <span class="info-acre">0.85 acre lot</span>
+                </div>
+                <div class="property-address">
+                  12008 Admirals Pointe Dr<br />
+                  Indianapolis, IN 46236
+                </div>
+                <button class="email-agent">Inquire About Sublease</button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <a class="text-decoration-none text-black" href="houseproperty.html">
+            <div class="property-card">
+              <img src="/img/03house.webp" alt="Property Image" class="property-image" />
+              <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+              </div>
+              <div class="property-detail">
+                <div class="property-status">
+                  <span class="status-completed">House For Sublet </span>
+                  <span class="property-price">$425,000</span>
+                </div>
+                <div class="property-info">
+                  <span class="info-beds">1 bed</span>
+                  <span class="info-baths">2 bath</span>
+                  <span class="info-sqft">1,300 sqft</span>
+                  <span class="info-acre">0.49 acre lot</span>
+                </div>
+                <div class="property-address">
+                  7548 Big Bend Blvd<br />
+                  Camby, IN 46113
+                </div>
+                <button class="email-agent">Inquire About Sublease</button>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="text-decoration-none text-black" href="houseproperty.html">
+            <div class="property-card">
+              <img src="/img/04house.webp" alt="Property Image" class="property-image" />
+              <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+              </div>
+              <div class="property-detail">
+                <div class="property-status">
+                  <span class="status-completed">House For Sublet </span>
+                  <span class="property-price">$324,990</span>
+                </div>
+                <div class="property-info">
+                  <span class="info-beds">5 bed</span>
+                  <span class="info-baths">4 bath</span>
+                  <span class="info-sqft">4,217 sqft</span>
+                  <span class="info-acre">0.95 acre lot</span>
+                </div>
+                <div class="property-address">
+                  6143 Cedar Shade Way<br />
+                  Indianapolis, IN 46259
+                </div>
+                <button class="email-agent">Inquire About Sublease</button>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pagination">
+          <button id="prev" class="disabled" onclick="changePage(-1)">
+            <span>&larr;</span>
+          </button>
+          <span id="page-info">Page 1 of 8</span>
+          <button id="next" onclick="changePage(1)">
+            <span>&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-container col-lg-3">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: info@rentalreviews.com</p>
+        <p>Phone: (123) 456-7890</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Policy</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Guidelines</h3>
+        <ul>
+          <li><a href="#">Community Guidelines</a></li>
+          <li><a href="#">Review Guidelines</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Rental Reviews. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    function initMap() {
+      var initialCenter = { lat: 39.12381, lng: -86.54328 };
+
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 20,
+        center: initialCenter,
+      });
+
+      var locations = [
+        { lat: 39.12345, lng: -86.54321, label: "1" },
+        { lat: 39.12348, lng: -86.54318, label: "2" },
+        { lat: 39.1235, lng: -86.54325, label: "3" },
+        { lat: 39.12355, lng: -86.5432, label: "4" },
+        { lat: 39.12358, lng: -86.54328, label: "5" },
+        { lat: 39.1236, lng: -86.54315, label: "6" },
+        { lat: 39.12363, lng: -86.54322, label: "7" },
+        { lat: 39.12366, lng: -86.54317, label: "8" },
+        { lat: 39.12368, lng: -86.54324, label: "9" },
+        { lat: 39.1237, lng: -86.54331, label: "10" },
+        { lat: 39.12373, lng: -86.54326, label: "11" },
+        { lat: 39.12376, lng: -86.54334, label: "12" },
+        { lat: 39.12378, lng: -86.54321, label: "13" },
+        { lat: 39.12381, lng: -86.54328, label: "14" },
+        { lat: 39.12384, lng: -86.54323, label: "15" },
+        { lat: 39.12387, lng: -86.5433, label: "16" },
+        { lat: 39.1239, lng: -86.54335, label: "17" },
+        { lat: 39.12393, lng: -86.54318, label: "18" },
+        { lat: 39.12396, lng: -86.54325, label: "19" },
+        { lat: 39.12399, lng: -86.54332, label: "20" },
+        { lat: 39.12402, lng: -86.54321, label: "21" },
+        { lat: 39.12405, lng: -86.54328, label: "22" },
+        { lat: 39.12408, lng: -86.54315, label: "23" },
+        { lat: 39.12411, lng: -86.54322, label: "24" },
+        { lat: 39.12414, lng: -86.54329, label: "25" },
+        { lat: 39.12417, lng: -86.54316, label: "26" },
+      ];
+
+      locations.forEach(function (location) {
+        new google.maps.Marker({
+          position: { lat: location.lat, lng: location.lng },
+          map: map,
+          label: location.label,
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initMap();
+    });
+  </script>
+
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh6jBVeV3bgeATG2c5bGgeBZ4ZKi6qJR8&callback=initMap"></script>
+
+  <script src="/js/index.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css"
+    integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+    integrity="sha512-oSbNXq0npB9GOC3OLhK8fgb+hKma1ntAY+UqAVgeMIWl5Xv6mJScR4qQXX9K+46Oj5R8mFVGr6U0FEXOFdT86Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".university-carousel").slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        dots: false,
+        arrows: true,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true,
+            },
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
+      });
+    });
+  </script>
+</body>
+
+</html>

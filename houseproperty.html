@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css"
+        integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rental Reviews</title>
+    <link rel="stylesheet" href="/css/Index.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+</head>
+
+<body>
+    <header class="desktop-header">
+        <div class="header-content">
+            <a href="Index.html">
+                <img src="img/logo-rental.png" alt="Rental Reviews Logo" class="logo" /></a>
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="Search.html">Search</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons desktop-menu">
+                <a href="#" class="button" id="signInBtn">Sign In</a>
+                <a href="#" class="button" id="signUpBtn">Sign Up</a>
+                <a href="propertyentry.html" class="button" id="subletPostingBtn">Sublet Posting</a>
+                <a href="#" class="button submit-review" id="blogBtn">Submit Rental Review</a>
+            </div>
+            <div class="profile-section">
+                <a class="text-black" href="profile.html">
+                    <i class="fa-solid fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <header class="mobile-header">
+        <div class="header-content">
+            <a href="Index.html">
+                <img src="img/logo-rental.png" alt="Rental Reviews Logo" class="logo" /></a>
+            <div class="mobile-menu-button" id="mobileMenuButton">&#9776;</div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="Search.html">Search</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" id="mobileSignInBtn">Sign In</a></li>
+                <li><a href="#" id="mobileSignUpBtn">Sign Up</a></li>
+                <li><a href="propertyentry.html" id="mobileSubletPostingBtn">Sublet Posting</a></li>
+                <li><a href="#" id="mobileBlogBtn">Submit Rental Review</a></li>
+            </ul>
+            <div class="profile-section">
+                <a class="text-black" href="profile.html">
+                    <i class="fa-solid fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="modal" id="signInModal">
+        <div class="modal-content review-form-container">
+            <div class="row align-items-center">
+                <div class="col-lg-2">
+                    <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+                </div>
+                <div class="col-lg-10">
+                    <h2>Sign in</h2>
+                </div>
+            </div>
+            <span class="close-btn">&times;</span>
+
+            <form id="signInForm">
+                <div class="form-group">
+                    <input type="text" id="signInUsername" name="username" required oninput="validateUsername(this)"
+                        placeholder=" " />
+                    <label for="signInUsername" class="text-start">Username</label>
+                </div>
+                <div class="form-group">
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required placeholder=" " />
+                        <label for="password" class="text-start">Password</label>
+                        <div class="toggle-password" onclick="togglePasswordVisibility()">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="modal-button">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="signUpModal">
+        <div class="modal-content review-form-container">
+            <div class="row align-items-center">
+                <div class="col-lg-2">
+                    <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+                </div>
+                <div class="col-lg-10">
+                    <h2>Sign Up</h2>
+                </div>
+            </div>
+            <span class="close-btn">&times;</span>
+            <form id="signUpForm">
+                <div class="form-group">
+                    <input type="text" id="signUpUsername" name="username" required oninput="validateUsername(this)"
+                        placeholder=" " />
+                    <label for="signUpUsername" class="text-start">Username</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="signup-email" name="signup-email" required placeholder=" " />
+                    <label for="signup-email" class="text-start">Email</label>
+                </div>
+                <div class="form-group">
+                    <div class="password-container">
+                        <input type="password" id="signup-password" name="signup-password" required placeholder=" " />
+                        <label for="signup-password" class="text-start">Password</label>
+                        <div class="toggle-password" onclick="toggleSignUpPasswordVisibility()">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="modal-button">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="subletPostingModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Sublet Posting</h2>
+        </div>
+    </div>
+
+    <div class="modal" id="blogModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="review-form-container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2">
+                        <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+                    </div>
+                    <div class="col-lg-10">
+                        <h3>Submit Rental Review</h3>
+                    </div>
+                </div>
+                <form id="reviewForm">
+                    <div class="form-group review">
+                        <input type="text" id="name" name="name" placeholder=" " required />
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-group review">
+                        <input type="email" id="email" name="email" placeholder=" " required />
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group review">
+                        <select id="rating" name="rating" required>
+                            <option value="" selected>Select Option</option>
+                            <option value="1">1 - Very Poor</option>
+                            <option value="2">2 - Poor</option>
+                            <option value="3">3 - Average</option>
+                            <option value="4">4 - Good</option>
+                            <option value="5">5 - Excellent</option>
+                        </select>
+                        <label for="rating">Rating</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="comments" name="comments" placeholder=" " rows="4" required></textarea>
+                        <label for="comments">Comments</label>
+                    </div>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="container house-property">
+            <div class="main-content">
+                <div class="property-name">
+                    <div class="location-house">
+                        <div>
+                            <a class="text-decoration-none" href="#">Illinois / </a>
+                            <a class="text-decoration-none" href="#">Cook County / </a>
+                            <a class="text-decoration-none" href="#">Chicago / </a>
+                            <a class="text-decoration-none" href="#">The Talman Building</a>
+                        </div>
+                        <div>
+                            <p class="update">
+                                <i class="fa-solid fa-rotate-right"></i> 1 Week Ago
+                            </p>
+                        </div>
+                    </div>
+                    <div class="location-house">
+                        <div>
+                            <h1 class="text-white">The Talman Building</h1>
+                        </div>
+                        <div class="text-white">
+                            <a href=""><i class="fa-solid fa-share-nodes m-2"></i></a>
+                            <a href=""><i class="fa-regular fa-heart m-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <section class="house-gallary">
+                    <div class="university-carousel">
+                        <div class="university-item">
+                            <img src="img/propertyimage/001.webp" alt="Loyola University Chicago" />
+                        </div>
+                        <div class="university-item">
+                            <img src="img/propertyimage/01.webp" alt="Loyola University Chicago" />
+                        </div>
+                        <div class="university-item">
+                            <img src="img/propertyimage/03.webp" alt="Loyola University Chicago" />
+                        </div>
+                        <div class="university-item">
+                            <img src="img/propertyimage/04.webp" alt="Loyola University Chicago" />
+                        </div>
+                        <div class="university-item">
+                            <img src="img/propertyimage/05.webp" alt="Loyola University Chicago" />
+                        </div>
+                        <div class="university-item">
+                            <img src="img/propertyimage/06.webp" alt="Loyola University Chicago" />
+                        </div>
+                        <div class="university-item">
+                            <img src="img/propertyimage/07.webp" alt="Loyola University Chicago" />
+                        </div>
+                    </div>
+                </section>
+
+                <div class="breadcrumb">
+                    <p class="address">2615-2621 W 61st St, Chicago, IL 60629</p>
+                    <p class="neighborhood">Chicago Lawn</p>
+                    <div class="d-flex">
+                        <div class="rating">
+                            <span>★★★★★</span>
+                            <span class="text-white"> (0 reviews)</span>
+                        </div>
+                        <p class="verified ms-4 m-0">
+                            <i class="fa-solid fa-check-double"></i> Verified Listing
+                        </p>
+                    </div>
+                    <div class="details text-white border">
+                        <div class="border-right">
+                            <span>Monthly Rent</span>
+                            <span>$850 - $1,050</span>
+                        </div>
+                        <div class="border-right">
+                            <span>Bedrooms</span>
+                            <span>1 - 2 bed</span>
+                        </div>
+                        <div class="border-right">
+                            <span>Bathrooms</span>
+                            <span>1 bath</span>
+                        </div>
+                        <div>
+                            <span>Square Feet</span>
+                            <span>950 - 1,400 sq ft</span>
+                        </div>
+                    </div>
+                    <p class="contact">Email is the preferred method of contact.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <section class="mainbox ">
+                            <h2>Property Details</h2>
+                            <ul>
+                                <li><strong>Price:</strong> $1,200/month</li>
+                                <li><strong>Bedrooms:</strong> 2</li>
+                                <li><strong>Bathrooms:</strong> 1</li>
+                                <li><strong>Square Feet:</strong> 900</li>
+                                <li>
+                                    <strong>12 Month Lease,
+                                        <a class="text-decoration-none text-dark" href="">
+                                            Available Now</a></strong>
+                                </li>
+                            </ul>
+                            <button id="contact-button">Contact This Property</button><br /><br />
+                        </section>
+                    </div>
+                    <div class="col-lg-6 justify-content-end">
+                        <div class="contact-card">
+                            <h2>Contact This Property</h2>
+                            <button class="w-75">Request Tour</button>
+                            <button class="w-75">Send Message</button>
+                            <div class="phone-number">
+                                <i class="fa-solid fa-phone-volume"></i> (123) 456-7890
+                            </div>
+                            <div class="additional-info">
+                                <div>
+                                    <i class="fa-solid fa-earth-americas"></i> Language: English
+                                    and Spanish
+                                </div>
+                                <div>
+                                    <i class="fa-regular fa-clock"></i> Open 5am - 7pm Today
+                                </div>
+                                <a href="#" class="view-hours">View All Hours</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-lg-6">
+                        <section class="features mainbox">
+                            <h2>Apartment Amenities</h2>
+                            <ul>
+                                <li>Hardwood Floors</li>
+                                <li>Updated Kitchen</li>
+                                <li>Large Windows</li>
+                                <li>On-site Laundry</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mainbox">
+                            <div class="tabs">
+                                <div class="tab active" onclick="showContent('requiredFees')">
+                                    Required Fees
+                                </div>
+                                <div class="tab" onclick="showContent('pets')">Pets</div>
+                                <div class="tab" onclick="showContent('parking')">
+                                    Parking
+                                </div>
+                            </div>
+                            <div class="tab-contents">
+                                <div id="requiredFees" class="tab-content active">
+                                    <p class="border-bottom">One-Time Move-In Fees</p>
+                                    <p class="border-bottom">Application Fee: $35</p>
+                                </div>
+                                <div id="pets" class="tab-content">
+                                    <h2>No Pets Allowed</h2>
+                                </div>
+                                <div id="parking" class="tab-content">
+                                    <p class="border-bottom">Parking Information</p>
+                                    <p class="border-bottom d-flex justify-content-between">
+                                        Street <span>--</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <section class="details">
+                    <h2>Details</h2>
+                    <table>
+                        <tr>
+                            <th>Unit Features</th>
+                            <td>Air Conditioning, Heating, Ceiling Fans, Smoke Free</td>
+                        </tr>
+                        <tr>
+                            <th>Pets</th>
+                            <td>Cats Allowed, Dogs Allowed</td>
+                        </tr>
+                        <tr>
+                            <th>Lease Length</th>
+                            <td>12 Months</td>
+                        </tr>
+                    </table>
+                </section> -->
+                <div class="features-container mt-3">
+                    <h3 class="m-3">Apartment Features</h3>
+                    <div class="feature-cards">
+                        <div class="feature-card">
+                            <i class="fa-solid fa-building-wheat"></i>
+                            <p>Hardwood Floors</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-radiation"></i>
+                            <p>Walk-In Closets</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-brands fa-pagelines"></i>
+                            <p>Yard</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-snowflake"></i>
+                            <p>Refrigerator</p>
+                        </div>
+                    </div>
+                    <div class="feature-lists">
+                        <ul>
+                            <li>Ceiling Fans</li>
+                            <li>Smoke Free</li>
+                            <li>Tub/Shower</li>
+                            <li>Eat-in Kitchen</li>
+                            <li>Oven</li>
+                        </ul>
+                        <ul>
+                            <li>Range</li>
+                            <li>Refrigerator</li>
+                            <li>Hardwood Floors</li>
+                            <li>Family Room</li>
+                            <li>Built-In Bookshelves</li>
+                        </ul>
+                        <ul>
+                            <li>Walk-In Closets</li>
+                            <li>Large Bedrooms</li>
+                            <li>Yard</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="university-distance mt-3 features-container">
+
+                    <div class="transportation-category">
+                        <h3>Education</h3>
+                        <table>
+                            <tr>
+                                <th>Colleges & Universities </th>
+                                <th>Distance</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Richard J. Daley College</div>
+                                        <div class="drive-time">Drive: 8 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">3.8 mi </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">University of Chicago</div>
+                                        <div class="drive-time">Drive: 12 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">5.7 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Saint Xavier University</div>
+                                        <div class="drive-time">Drive: 15 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">6.6 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Ill. Inst. of Technology</div>
+                                        <div class="drive-time">Drive: 14 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">6.8 mi</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="transportation features-container mt-3">
+                    <h2>Transportation</h2>
+                    <p class="transportation-info text-black-50">
+                        Transportation details here...
+                    </p>
+                    <div class="transportation-category">
+                        <h3>Transit / Subway</h3>
+                        <table>
+                            <tr>
+                                <th>Station</th>
+                                <th>Distance</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Ashland & 63rd Street Station</div>
+                                        <div class="drive-time">Drive: 4 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">1.8 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Western Station </div>
+                                        <div class="drive-time">Drive: 4 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">1.8 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Kedzie Station </div>
+                                        <div class="drive-time">Drive: 6 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">2.8 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Halsted Station </div>
+                                        <div class="drive-time">Drive: 6 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">3.0 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Pulaski Station </div>
+                                        <div class="drive-time">Drive: 8 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">3.7 mi</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="transportation-category">
+                        <h3>Commuter Rail</h3>
+                        <table>
+                            <tr>
+                                <th>Station</th>
+                                <th>Distance</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Wrightwood Station</div>
+                                        <div class="drive-time">Drive: 7 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">3.3 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Ashburn Station</div>
+                                        <div class="drive-time">Drive: 8 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">4.0 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Brainerd Station</div>
+                                        <div class="drive-time">Drive: 10 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">5.1 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Gresham Station</div>
+                                        <div class="drive-time">Drive: 11 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">5.6 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Beverly-91st Street Station</div>
+                                        <div class="drive-time">Drive: 12 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">5.8 mi</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="transportation-category">
+                        <h3>Airports</h3>
+                        <table>
+                            <tr>
+                                <th>Airport</th>
+                                <th>Distance</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Chicago Midway International</div>
+                                        <div class="drive-time">Drive: 9 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">4.7 mi</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="station-details">
+                                        <div class="station-name">Chicago O'Hare International</div>
+                                        <div class="drive-time">Drive: 40 min</div>
+                                    </div>
+                                </td>
+                                <td class="distance">24.4 mi</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!--           <section class="location">
+                    <h2>Location</h2>
+                    <div id="map"></div>
+                    <p>Located in a great neighborhood with plenty of amenities.</p>
+                </section>
+
+                <section class="neighborhood">
+                    <h2>Neighborhood</h2>
+                    <p>
+                        This property is located in the vibrant Lincoln Park neighborhood,
+                        known for its beautiful parks, great restaurants, and lively
+                        community events.
+                    </p>
+                </section>
+                <section class="contact-form">
+                    <h2>Contact This Property</h2>
+                    <form>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" />
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" />
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message"></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </section>
+
+                <section class="transportation">
+                    <h2>Transportation</h2>
+                    <ul>
+                        <li><i class="fas fa-bus"></i> Bus Lines: 22, 36, 151</li>
+                        <li><i class="fas fa-subway"></i> Subway: Red Line</li>
+                        <li><i class="fas fa-train"></i> Train: Union Station</li>
+                    </ul>
+                </section>-->
+
+
+                <div class="mt-3 rating features-container">
+                    <h2>Property Ratings at The Talman Building</h2>
+                    <div class="rating-box">
+                        <div class="rating-score">
+                            <div class="score">4.0</div>
+                            <div class="description">Great</div>
+                            <div class="out-of">Out of 5</div>
+                        </div>
+                        <div class="reviews">
+                            <div class="stars">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9734;</span>
+                            </div>
+
+                            <div class="no-reviews text-black-50">No Renter Reviews Yet</div>
+                            <button href="#" class="review-button">Write a Review</button>
+                        </div>
+                    </div>
+                    <div class="no-reviews-message">There are no reviews for this property. Be the first to add a review
+                        on this property.<br />
+                        <p>Share details of your own experience with this property</p>
+                    </div>
+                </div>
+                <section class="accordion faq features-container mt-3 accordion--radio">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="tab primary-color-shade">
+                        <input type="radio" name="accordion" id="rd1">
+                        <label for="rd1" class="tab__label">Which floor plans are available, and what are the price
+                            ranges?</label>
+                        <div class="tab__content">
+                            <p class="text-black-50">The Talman Building has one to two bedrooms with rent ranges from
+                                $850/mo. to $1,050/mo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab primary-color-shade">
+                        <input type="radio" name="accordion" id="rd2">
+                        <label for="rd2" class="tab__label">Can I see a model or tour The Talman Building?
+                        </label>
+                        <div class="tab__content">
+                            <p class="text-black-50">Yes, to view the floor plan in person, please schedule a personal
+                                tour.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab border-bottom">
+                        <input type="radio" name="accordion" id="rd3">
+                        <label for="rd3" class="tab__label">What neighborhood is the property located in?
+                        </label>
+                        <div class="tab__content">
+                            <p class="text-black-50">The Talman Building is in Chicago Lawn in the city of Chicago. Here
+                                you’ll find three
+                                shopping centers within 2.7 miles of the property. Five parks are within 3.3 miles,
+                                including Gage Park, Marquette Park, and Ogden Park.
+
+                            </p>
+                        </div>
+                    </div>
+
+
+                </section>
+                <div class="property-description features-container mt-3">
+                    <h2>About This Property</h2>
+                    <a class="text-black-50" href="#">Learn more about this property</a>
+                    <p>
+
+                        <code>  "The Talman Building" </code>exudes timeless elegance and modern functionality. Nestled
+                        in a vibrant
+                        urban setting, this property stands as a beacon of architectural finesse and historical
+                        significance. With its distinctive facade and meticulously preserved interiors,
+                        <code>  "The Talman Building" </code> seamlessly blends classic charm with contemporary
+                        amenities.
+                    </p>
+                    <div class="property-details">
+                        <div>
+                            <h4>Building Type</h4>
+                            <p>Commercial</p>
+                        </div>
+                        <div>
+                            <h4>Managed By</h4>
+                            <p>Alliance Residential Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-container nearby-searches mt-3">
+                <h2>Try These Popular Nearby Searches </h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Cities</h3>
+                        <ul>
+                            <li><a href="#">Cicero Rentals</a></li>
+                            <li><a href="#">Stickney Rentals</a></li>
+                            <li><a href="#">Chicago Lawn Rentals</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3>Neighborhoods</h3>
+                        <ul>
+                            <li><a href="#">Southwest Chicago Rentals</a></li>
+                            <li><a href="#">Downtown Chicago Rentals</a></li>
+                            <li><a href="#">North Lakefront Rentals</a></li>
+                            <li><a href="#">South Lakefront Rentals</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3>ZIP Codes</h3>
+                        <ul>
+                            <li><a href="#">60623 Rentals</a></li>
+                            <li><a href="#">60804 Rentals</a></li>
+                            <li><a href="#">60624 Rentals</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 mt-4">
+                        <h3>Select Bedrooms</h3>
+                        <ul>
+                            <li><a href="#">Studio Apartments in Chicago</a></li>
+                            <li><a href="#">1 Bedroom Apartments in Chicago</a></li>
+                            <li><a href="#">Rooms for Rent in Chicago</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 mt-4">
+                        <h3>Explore Property Types</h3>
+                        <ul>
+                            <li><a href="#">Chicago Lawn Lofts for Rent</a></li>
+                            <li><a href="#">Chicago Lawn Houses for Rent</a></li>
+                            <li><a href="#">60629 Townhomes for Rent</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 mt-4">
+                        <h3>Stay on Budget</h3>
+                        <ul>
+                            <li><a href="#">Chicago Apartments Under $600</a></li>
+                            <li><a href="#">Chicago Apartments Under $700</a></li>
+                            <li><a href="#">Chicago Apartments Under $800</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 mt-4">
+                        <h3>Choose by Amenities</h3>
+                        <ul>
+                            <li><a href="#">Chicago Pet Friendly Apartments</a></li>
+                            <li><a href="#">Chicago Utilities-Included Apartments</a></li>
+                            <li><a href="#">Chicago Furnished Apartments</a></li>
+                            <li><a href="#">Chicago Apartments with Washer/Dryer</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 mt-4">
+                        <h3>Find Specialty Housing</h3>
+                        <ul>
+                            <li><a href="#">Chicago Student Housing</a></li>
+                            <li><a href="#">Chicago Low Income Housing</a></li>
+                            <li><a href="#">Chicago Senior Housing</a></li>
+                            <li><a href="#">Chicago Short-Term Housing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@rentalreviews.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Policy</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Guidelines</h3>
+                <ul>
+                    <li><a href="#">Community Guidelines</a></li>
+                    <li><a href="#">Review Guidelines</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Rental Reviews. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css"
+        integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-oSbNXq0npB9GOC3OLhK8fgb+hKma1ntAY+UqAVgeMIWl5Xv6mJScR4qQXX9K+46Oj5R8mFVGr6U0FEXOFdT86Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        function showContent(tabId) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".university-carousel").slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1000,
+                dots: false,
+                arrows: true,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: true,
+                        },
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        },
+                    },
+                ],
+            });
+        });
+    </script>
+</body>
+
+</html>

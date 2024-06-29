@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css"
+    integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rental Reviews</title>
+  <link rel="stylesheet" href="/css/Index.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+
+
+<header class="desktop-header">
+  <div class="header-content">
+    <a href="Index.html">
+      <img src="img/logo-rental.png" alt="Rental Reviews Logo" class="logo" /></a>
+    <nav class="desktop-menu">
+      <ul>
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-buttons desktop-menu">
+      <a href="#" class="button" id="signInBtn">Sign In</a>
+      <a href="#" class="button" id="signUpBtn">Sign Up</a>
+      <a href="propertyentry.html" class="button" id="subletPostingBtn">Sublet Posting</a>
+      <a href="#" class="button submit-review" id="blogBtn">Submit Rental Review</a>
+    </div>
+    <div class="profile-section">
+      <a class="text-black" href="profile.html">
+        <i class="fa-solid fa-user"></i></a>
+    </div>
+  </div>
+</header>
+
+<header class="mobile-header">
+  <div class="header-content">
+    <a href="Index.html">
+      <img src="img/logo-rental.png" alt="Rental Reviews Logo" class="logo" /></a>
+    <div class="mobile-menu-button" id="mobileMenuButton">&#9776;</div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="Index.html">Home</a></li>
+      <li><a href="#">Search</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#" id="mobileSignInBtn">Sign In</a></li>
+      <li><a href="#" id="mobileSignUpBtn">Sign Up</a></li>
+      <li><a href="propertyentry.html" id="mobileSubletPostingBtn">Sublet Posting</a></li>
+      <li><a href="#" id="mobileBlogBtn">Submit Rental Review</a></li>
+    </ul>
+    <div class="profile-section">
+      <a class="text-black" href="profile.html">
+        <i class="fa-solid fa-user"></i></a>
+    </div>
+  </div>
+</header>
+
+<div class="modal" id="signInModal">
+  <div class="modal-content review-form-container">
+    <div class="row align-items-center">
+      <div class="col-lg-2">
+        <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+      </div>
+      <div class="col-lg-10">
+        <h2>Sign in</h2>
+      </div>
+    </div>
+    <span class="close-btn">&times;</span>
+
+    <form id="signInForm">
+      <div class="form-group">
+        <input type="text" id="signInUsername" name="username" required oninput="validateUsername(this)"
+          placeholder=" " />
+        <label for="signInUsername" class="text-start">Username</label>
+      </div>
+      <div class="form-group">
+        <div class="password-container">
+          <input type="password" id="password" name="password" required placeholder=" " />
+          <label for="password" class="text-start">Password</label>
+          <div class="toggle-password" onclick="togglePasswordVisibility()">
+            <i class="fas fa-eye"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <button type="submit" class="modal-button">Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="signUpModal">
+  <div class="modal-content review-form-container">
+    <div class="row align-items-center">
+      <div class="col-lg-2">
+        <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+      </div>
+      <div class="col-lg-10">
+        <h2>Sign Up</h2>
+      </div>
+    </div>
+    <span class="close-btn">&times;</span>
+    <form id="signUpForm">
+      <div class="form-group">
+        <input type="text" id="signUpUsername" name="username" required oninput="validateUsername(this)"
+          placeholder=" " />
+        <label for="signUpUsername" class="text-start">Username</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="signup-email" name="signup-email" required placeholder=" " />
+        <label for="signup-email" class="text-start">Email</label>
+      </div>
+      <div class="form-group">
+        <div class="password-container">
+          <input type="password" id="signup-password" name="signup-password" required placeholder=" " />
+          <label for="signup-password" class="text-start">Password</label>
+          <div class="toggle-password" onclick="toggleSignUpPasswordVisibility()">
+            <i class="fas fa-eye"></i>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button type="submit" class="modal-button">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="subletPostingModal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Sublet Posting</h2>
+  </div>
+</div>
+
+<div class="modal" id="blogModal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="review-form-container">
+      <div class="row align-items-center">
+        <div class="col-lg-2">
+          <img src="img/fav.png" alt="Rental Reviews Logo" class="modal-logo w-75" />
+        </div>
+        <div class="col-lg-10">
+          <h3>Submit Rental Review</h3>
+        </div>
+      </div>
+      <form id="reviewForm">
+        <div class="form-group review">
+          <input type="text" id="name" name="name" placeholder=" " required />
+          <label for="name">Name</label>
+        </div>
+        <div class="form-group review">
+          <input type="email" id="email" name="email" placeholder=" " required />
+          <label for="email">Email</label>
+        </div>
+        <div class="form-group review">
+          <select id="rating" name="rating" required>
+            <option value="" selected>Select Option</option>
+            <option value="1">1 - Very Poor</option>
+            <option value="2">2 - Poor</option>
+            <option value="3">3 - Average</option>
+            <option value="4">4 - Good</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+          <label for="rating">Rating</label>
+        </div>
+        <div class="form-group">
+          <textarea id="comments" name="comments" placeholder=" " rows="4" required></textarea>
+          <label for="comments">Comments</label>
+        </div>
+        <button type="submit">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="background-section">
+  <div class="content">
+    <section class="search-section">
+      <select name="state" id="state">
+        <option>Select Country</option>
+        <option>Canada</option>
+        <option>USA</option>
+        <option>Australia</option>
+        <option>UK</option>
+        <option>Germany</option>
+      </select>
+
+      <select name="city" id="city">
+        <option>Select City</option>
+        <option>Toronto</option>
+        <option>New York</option>
+        <option>Sydney</option>
+        <option>London</option>
+        <option>Berlin</option>
+      </select>
+
+      <select name="area" id="area">
+        <option>Select Area</option>
+        <option>Area 1</option>
+        <option>Area 2</option>
+        <option>Area 3</option>
+        <option>Area 4</option>
+        <option>Area 5</option>
+      </select>
+
+      <select name="duration" id="duration">
+        <option>Select Duration</option>
+        <option>1 month</option>
+        <option>3 months</option>
+        <option>6 months</option>
+        <option>9 months</option>
+        <option>12 months</option>
+      </select>
+
+      <select name="startMonth" id="startMonth">
+        <option>Select Start Month</option>
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+      </select>
+
+      <select name="university" id="university">
+        <option>Select University</option>
+        <option>Loyola University Chicago</option>
+        <option>DePaul University</option>
+        <option>Illinois Institute of Technology</option>
+        <option>Columbia College Chicago</option>
+        <option>Roosevelt University</option>
+        <option>Saint Xavier University</option>
+      </select>
+      <select name="distance" id="distance">
+        <option>Select Distance From University</option>
+        <option>1 km</option>
+        <option>2 km</option>
+        <option>3 km</option>
+        <option>4 km</option>
+        <option>5 km</option>
+      </select>
+      <div>
+        <button class="search-button" onclick="searchUniversities()">
+          Search
+        </button>
+      </div>
+    </section>
+  </div>
+</section>
+<main class="main-home">
+
+
+  <section class="university-lookup">
+    <p class="text-white">Featured Universities</p>
+    <div class="university-carousel">
+      <div class="university-item">
+        <img src="/img/01 university.jpg" alt="Loyola University Chicago" />
+        <p>Loyola University Chicago</p>
+      </div>
+      <div class="university-item">
+        <img src="/img/02 university.jpeg" alt="DePaul University" />
+        <p>DePaul University</p>
+      </div>
+      <div class="university-item">
+        <img src="/img/03 university.jpeg" alt="Illinois Institute of Technology" />
+        <p>Illinois Institute of Technology</p>
+      </div>
+      <div class="university-item">
+        <img src="/img/04 university.jpg" alt="Columbia College Chicago" />
+        <p>Columbia College Chicago</p>
+      </div>
+      <div class="university-item">
+        <img src="/img/05 university.jpg" alt="Roosevelt University" />
+        <p>Roosevelt University</p>
+      </div>
+      <div class="university-item">
+        <img src="/img/06 university.jpg" alt="Saint Xavier University" />
+        <p>Saint Xavier University</p>
+      </div>
+    </div>
+  </section>
+</main>
+<main>
+  <section class="city-list">
+    <h2 class="text-center">Cities</h2>
+    <div class="city-container">
+      <div class="city-item">New York</div>
+      <div class="city-item">Los Angeles</div>
+      <div class="city-item">Chicago</div>
+      <div class="city-item">Houston</div>
+      <div class="city-item">Phoenix</div>
+      <div class="city-item">Philadelphia</div>
+      <div class="city-item">San Antonio</div>
+      <div class="city-item">San Diego</div>
+      <div class="city-item">Dallas</div>
+      <div class="city-item">San Jose</div>
+      <div class="city-item">Austin</div>
+      <div class="city-item">Jacksonville</div>
+      <div class="city-item">Fort Worth</div>
+      <div class="city-item">Columbus</div>
+      <div class="city-item">Charlotte</div>
+      <div class="city-item">San Francisco</div>
+      <div class="city-item">Indianapolis</div>
+      <div class="city-item">Seattle</div>
+      <div class="city-item">Denver</div>
+      <div class="city-item">Washington</div>
+      <div class="city-item">Boston</div>
+      <div class="city-item">El Paso</div>
+      <div class="city-item">Nashville</div>
+      <div class="city-item">Detroit</div>
+      <div class="city-item">Oklahoma City</div>
+      <div class="city-item">Portland</div>
+      <div class="city-item">Las Vegas</div>
+      <div class="city-item">Memphis</div>
+      <div class="city-item">Louisville</div>
+      <div class="city-item">Baltimore</div>
+    </div>
+  </section>
+  <div class="testimonial-carousel">
+    <h2 class="text-center">Testimonial</h2>
+    <div class="testimonial active">
+      <div class="testimonial-content">
+        <img src="/img/01 men.jpg" alt="John Doe" />
+        <div class="testimonial-text">
+          <p>
+            "This is the best rental review website I've ever used! Highly
+            recommend!"
+          </p>
+          <h4>- John Doe</h4>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-content">
+        <img src="/img/02 men.jpeg" alt="Jane Smith" />
+        <div class="testimonial-text">
+          <p>
+            "Fantastic service and great user experience. Made my rental
+            search so much easier."
+          </p>
+          <h4>- Jane Smith</h4>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-content">
+        <img src="/img/03 men.jpg" alt="Sam Wilson" />
+        <div class="testimonial-text">
+          <p>
+            "I found my perfect apartment thanks to Rental Reviews. Great
+            job!"
+          </p>
+          <h4>- Sam Wilson</h4>
+        </div>
+      </div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+  <section class="feedback-poster">
+    <img src="/img/feedback.png" alt="Feedback Poster" />
+    <div class="poster-content">
+      <a href="#" class="poster-button button submit-review" id="blogBtn">Submit Your Review</a>
+    </div>
+  </section>
+</main>
+
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: info@rentalreviews.com</p>
+      <p>Phone: (123) 456-7890</p>
+    </div>
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h3>Policy</h3>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Guidelines</h3>
+      <ul>
+        <li><a href="#">Community Guidelines</a></li>
+        <li><a href="#">Review Guidelines</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Rental Reviews. All rights reserved.</p>
+  </div>
+</footer>
+<script src="/js/index.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css"
+  integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+  integrity="sha512-oSbNXq0npB9GOC3OLhK8fgb+hKma1ntAY+UqAVgeMIWl5Xv6mJScR4qQXX9K+46Oj5R8mFVGr6U0FEXOFdT86Q=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".university-carousel").slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 1000,
+      dots: false,
+      arrows: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+  });
+</script>
+</body>
+
+</html>
